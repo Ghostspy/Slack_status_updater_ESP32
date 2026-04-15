@@ -53,3 +53,7 @@ dkms.conf
 
 # debug information files
 *.dwo
+
+# Do not include credentials file with sensitive information
+credentials.h
+settings.json

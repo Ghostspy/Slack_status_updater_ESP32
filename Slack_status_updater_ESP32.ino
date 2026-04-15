@@ -26,29 +26,26 @@
 
 #include <WiFi.h>
 #include <WiFiClientSecure.h>
+#include "credentials.h"
 
 // ----------------------------
 // Additional Libraries - each one of these will need to be installed.
 // ----------------------------
 
-#include <ArduinoSlack.h>
 // Library for connecting to the Slack API
+#include <ArduinoSlack.h>
 
 // Install from Github
 // https://github.com/witnessmenow/arduino-slack-api
 
-#include <ArduinoJson.h>
 // Library used for parsing Json from the API responses
+#include <ArduinoJson.h>
 
 // Search for "Arduino Json" in the Arduino Library manager
 // https://github.com/bblanchon/ArduinoJson
 
-//------- Replace the following! ------
-
-char ssid[] = "gh-iot";         // your network SSID (name)
-char password[] = "littleorangemen"; // your network password
-
-#define SLACK_ACCESS_TOKEN "xoxp-441976140354-463372417300-4044683452359-caf019c6188a0fbb3afd4a420edd0a86"
+char ssid[] = WIFI_SSID;         // your network SSID (name)
+char password[] = WIFI_PASSWORD; // your network password
 
 //------- ---------------------- ------
 
@@ -136,7 +133,7 @@ for (int i = 0; i < pinCount; i++) {
     // read the pushbutton input pin:
   switchState[i] = digitalRead(switchPin[i]);
 }
-for (int j = 0; j < pinCount; j++) {  
+for (int j = 0; j < pinCount; j++) {
   // compare the switchState to its previous state
   if (switchState[j] != lastSwitchState[j]) { // if the state has changed
     if (switchState[j] == HIGH) {
